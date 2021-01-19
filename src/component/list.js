@@ -24,50 +24,55 @@ const handleChange = (e)=>{
     performSearch(searchTerm)
 }
 const performFilter = (filter)=>{
-    const filteredRecords = data?.records?.profile?.filter((ele)=> {
-        let count = ele.filter.toLowerCase()
-        return count.includes(filter.toLowerCase())
+    const filteredRecord = data?.records?.profiles?.filter((ele)=> {
+        return ele?.Gender?.includes(filter)
     })
+    console.log(5)
     setFilteredRecord(filteredRecord)
+    console.log(6)
     return filteredRecord
 }
 
 
 const handleFilter = (e)=>{
-    const records = e.target.value
-    setFilter(filter);
-    performFilter(records)
+    const record = e.target.value
+    setFilter(record);
+    performFilter(record)
 }
-const recordData = searchText ? searchedRecord : filter? filteredRecord : data?.records?.profiles
+const recordData = searchText ? searchedRecord : filter ? filteredRecord : data?.records?.profiles
 
 if (!recordData || recordData?.length === 0){
 return <p> No repos, sorry </p>
 }
-console.log(data)
 
   return (
-    <div>
+    <div className="returned">
+    <div className='head'>
+    <h1 className="logo">eMED</h1>
     <input
+    className="input"
     type = "text"
-    placeholder= "Search"
+    placeholder= "Search..."
     value = {searchText}
     onChange={handleChange}
     />
+    </div>
 
-    <select
-    class="filter"
+     <div className="headNext">
+     <h2 className="cus">Customer Information</h2>
+     <select className="filter"
     onChange={handleFilter}
-    value = {filter}
-    >
-     <option value="">Filter By</option>
-     <option value="Gender">Gender</option>
-     <option value="Payment Method">payment Method</option>
-     <option value="Credit Card Type">Credit Card Type</option>
-     </select>
+     value = {filter}
+     >
+      <option value="">Filter By: Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Prefer To Skip">Prefer to skip</option>
+      </select>
+     </div>
 
     <div className='grid'>
       {recordData.map((items, index) => {
-        console.log(data.records.profiles)
         if(index < 20){
           return (
             <div key={items.MacAddress} className='list'>

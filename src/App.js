@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import List from './component/list';
 import Loading from './component/loading';
-import Search from './component/search';
 
 
 function App() {
@@ -25,18 +24,9 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='header'>
-        <div>
-        <span>LOGO</span>
-          </div>
-
-      </div>
-      <h1>Customer Information</h1>
-
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} data={appState.data} />
       </div>
-
     </div>
   );
 }
