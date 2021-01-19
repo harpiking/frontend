@@ -27,9 +27,7 @@ const performFilter = (filter)=>{
     const filteredRecord = data?.records?.profiles?.filter((ele)=> {
         return ele?.Gender?.includes(filter)
     })
-    console.log(5)
     setFilteredRecord(filteredRecord)
-    console.log(6)
     return filteredRecord
 }
 
@@ -67,7 +65,7 @@ return <p> No repos, sorry </p>
       <option value="">Filter By: Gender</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-      <option value="Prefer To Skip">Prefer to skip</option>
+      <option value="Prefer to skip">Prefer to skip</option>
       </select>
      </div>
 
